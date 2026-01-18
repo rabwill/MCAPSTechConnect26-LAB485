@@ -499,9 +499,9 @@ To connect your orchestrator agent to the two specialized agents, you need to li
 2. Open **Zava Care** agent and test below orchestrated workflow:
 
 
-**Complex Workflow : Emergency Coordination**  
+**Complex Workflow : Multi Agent Coordination**  
 ```
-We have multiple storm damage claims from yesterday. Show me all urgent claims, their inspection needs, available emergency contractors, and emergency service pricing
+Find me all open roof damage claims along with contractor pricing insights
 ```
 
 ☑️  Well done! You've successfully built Zava Insurance's Connected Agent orchestration system! 
