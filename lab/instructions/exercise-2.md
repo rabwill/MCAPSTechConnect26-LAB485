@@ -27,15 +27,13 @@ The key addition you'll notice is the `EmbeddedKnowledge` folder. This is where 
 
 > [!hint] If you do not see **EmbeddedKnowledge** folder, you have not installed the Pre-release version of Microsoft 356 Agents Toolkit. Switch to this version and start again. 
 
+> [!hint] Sample PDF files without sensitivity labels are provided for testing purposes. If you choose to test with your own files—especially Office documents—ensure they comply with the sensitivity labels configured in your tenant.
 
 ## Step 2: Configure the Agent for Zava's contractor procurement knowledge
 
 ### Download files to your machine
 Go to [this url](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/docs/assets/docs/extend-m365-copilot-09&filename=EmbeddedKnowledge){target=_blank} and extract all files into the `appPackage/EmbeddedKnowledge` folder inside your newly created declarative agent project.
 
-The project should look like below after you have downloaded and extracted the files.
-
-!IMAGE[extracted.png](instructions331914/extracted.png)
 
 
 
@@ -85,13 +83,13 @@ Replace the content of `appPackage/declarativeAgent.json` with below configurati
                     "file": "EmbeddedKnowledge/Claims_Inspection_Guidelines.pdf"
                 },
                 {
-                    "file": "EmbeddedKnowledge/Pacific Water Restoration-Pricing.docx"
+                    "file": "EmbeddedKnowledge/Pacific Water Restoration-Pricing.pdf"
                 },
                 {
                     "file": "EmbeddedKnowledge/Thompson Roofing Solutions-Pricing.pdf"
                 },
                 {
-                    "file": "EmbeddedKnowledge/Wilson General Contractors-Pricing.docx"
+                    "file": "EmbeddedKnowledge/Wilson General Contractors-Pricing.pdf"
                 }
             ]
         }
