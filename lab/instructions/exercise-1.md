@@ -13,6 +13,7 @@ Open a terminal and run:
 ```
 npx @modelcontextprotocol/inspector --transport http --server-url https://claims-mcp-app.yellowcliff-c66c6908.eastus.azurecontainerapps.io/mcp/messages
 ```
+> Note: If not already installed, you'll be prompted to install the @modelcontextprotocol/inspector@0.18.0 package. Proceed with the installation. 
 
 This opens a web interface to test MCP tools.
 
@@ -72,7 +73,7 @@ You will be directed to the newly created project which has the file `.vscode/mc
 !IMAGE[atk-fetch.png](instructions331914/atk-fetch.png)
 
 - When you select  **ATK:Fetch action from MCP**, you will be asked to provide the action manifest, select **ai-plugin.json**.
-- Select the tools you want to add to the agent. Let's select 10 tools for now.
+- Select the tools you want to add to the agent. Select all. 
 
     - create_claim
     - create_inspection
@@ -108,7 +109,7 @@ Open `appPackage/ai-plugin.json` and examine the structure with your chosen tool
 }
 ```
 
-You now have a basic Declarative Agent that is connected to your MCP Server with 10 tools ready for use.
+You now have a basic Declarative Agent that is connected to your MCP Server with tools ready for use.
 
 ---
 
@@ -276,8 +277,40 @@ Your agent now has a clear identity as Zava's claims assistant with comprehensiv
 
 ---
 
+## Step 4: Update tools in plugin manifest
+> This step is to avoid a known issue with agents built using Agents Toolkit Pre-release where where tool definitions are separated in a file.
 
-## Step 4: Test the Agent Integration
+- Copy the contents of file **appPackage/mcp-tools.json** 
+- Open file **appPackage/ai-plugin.json**
+- find property **mcp_tool_description**:
+```
+  "mcp_tool_description": {
+                    "file": "mcp-tools.json"
+                }
+```
+- Replace its contents with what was copied over from **mcp-tools.json** file
+- The final look of the property is as below:
+
+```
+   "mcp_tool_description": {
+                    "tools": [
+                        {
+                            "name": "create_claim",
+                            "description": "Create a new insurance claim",
+                            "inputSchema": {
+                                "type": "object",
+                                "properties": {
+                                    "claimNumber": {
+                                        "type": "string",
+                                        "description": "Unique claim number"
+                                    },
+                                    "policyNumber": {
+                                        "type": "string",
+                                        "description": "Policy number"
+                                    },...
+```
+
+## Step 5: Test the Agent Integration
 
 Test your Declarative Agent to ensure it can successfully communicate with the MCP server and handle claims operations.
 

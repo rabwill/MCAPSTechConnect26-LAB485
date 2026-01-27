@@ -1,8 +1,7 @@
 
-In this exercise, you'll create a Declarative Agent in Microsoft 365 Copilot that leverages embedded knowledge—local files containing Zava Insurance's contractor pricing data and claims inspection guidelines. You'll then build ZavaCare, a Connected Agent that orchestrates your specialized agents (Zava Claims and Zava Procurement) into a unified claims processing experience, enabling insurance adjusters to seamlessly access claims data, procurement information, and cost estimates through natural language interactions.
+In this exercise, you'll create a Declarative Agent in Microsoft 365 Copilot that leverages embedded knowledge-local files containing Zava Insurance's contractor pricing data and claims inspection guidelines. You'll then build ZavaCare, a Connected Agent that orchestrates your specialized agents (Zava Claims and Zava Procurement) into a unified claims processing experience, enabling insurance adjusters to seamlessly access claims data, procurement information, and cost estimates through natural language interactions.
 
 ## Step 1: Create a New Declarative Agent for Embedded knowledge
-
 
 In this step, you'll use the Microsoft 365 Agents Toolkit to create a new Declarative Agent project that will use files stored locally in the project
 
@@ -27,13 +26,12 @@ The key addition you'll notice is the `EmbeddedKnowledge` folder. This is where 
 
 > [!hint] If you do not see **EmbeddedKnowledge** folder, you have not installed the Pre-release version of Microsoft 356 Agents Toolkit. Switch to this version and start again. 
 
-> [!hint] Sample PDF files without sensitivity labels are provided for testing purposes. If you choose to test with your own files—especially Office documents—ensure they comply with the sensitivity labels configured in your tenant.
+> [!hint] Sample PDF files without sensitivity labels are provided for testing purposes. If you choose to test with your own files—especially Office documents, ensure they comply with the sensitivity labels configured in your tenant.
 
 ## Step 2: Configure the Agent for Zava's contractor procurement knowledge
 
 ### Download files to your machine
 Go to [this url](https://download-directory.github.io/?url=https://github.com/microsoft/copilot-camp/tree/main/docs/assets/docs/extend-m365-copilot-09&filename=EmbeddedKnowledge){target=_blank} and extract all files into the `appPackage/EmbeddedKnowledge` folder inside your newly created declarative agent project.
-
 
 
 
@@ -259,7 +257,7 @@ Replace the content of `appPackage/declarativeAgent.json` with Zava's configurat
     "description": "An intelligent agent that helps you manage and process insurance claims efficiently. Get instant answers about claim status, policy details, and streamline your claims workflow.",
     "instructions": "$[file('instruction.txt')]",
     "conversation_starters": [
-         {
+       {
             "title": "End-to-End Claims Processing",
             "text": "For all moderate-severity roof or water damage claims , group them by city and propose contractor assignments using our approved network. For each claim, estimate the repair cost using current pricing for inspection, repair, and materials, and highlight where contractor selection changes the total cost by more than 15%."
         },
@@ -418,14 +416,14 @@ To connect your orchestrator agent to the two specialized agents, you need to li
 
 #### 1: Get the Zava Claims Agent ID
 
-1. **Open your ZavaClaims project** (created in Lab 08) in VS Code
+1. **Open your ZavaClaims project** (created in previous exercise) in VS Code
 2. Navigate to the `env/.env.dev` file
-3. Find the `M365_TITLE_ID` value (looks like: `12345678-abcd-1234-abcd-123456789abc`)
+3. Find the `M365_TITLE_ID` value (looks like: `T_12345678-abcd-1234-abcd-123456789abc`, this is a mock value)
 4. **Copy this entire GUID** and paste it somewhere safe - label it as **Claims Agent ID**
 
 #### 2: Get the Zava Procurement Agent ID
 
-1. **Open your ZavaProcurement project** (created earlier in this lab) in VS Code
+1. **Open your ZavaProcurement project** (created in this exercise) in VS Code
 2. Navigate to the `env/.env.dev` file
 3. Find the `M365_TITLE_ID` value
 4. **Copy this entire GUID** and paste it somewhere safe - label it as **Procurement Agent ID**
@@ -454,7 +452,7 @@ To connect your orchestrator agent to the two specialized agents, you need to li
    - Replace `PASTE_CLAIMS_AGENT_ID_HERE` with your **Claims Agent ID**
    - Replace `PASTE_PROCUREMENT_AGENT_ID_HERE` with your **Procurement Agent ID**
 
-**Example of final structure:**
+**Example of final structure (MOCK ids used for lab):**
 ```json
 {
   "conversation_starters": [
@@ -462,10 +460,10 @@ To connect your orchestrator agent to the two specialized agents, you need to li
   ],
   "worker_agents": [
     {
-      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+      "id": "T_a1b2c3d4-e5f6-7890-abcd-ef1234567890"
     },
     {
-      "id": "9876fedc-ba09-8765-4321-abcdef123456"
+      "id": "T_9876fedc-ba09-8765-4321-abcdef123456"
     }
   ]
 }
